@@ -1,0 +1,302 @@
+{
+  "version": 4,
+  "app_title": "InsightSheet Plan",
+  "nav": {
+    "placement": "none",
+    "items": []
+  },
+  "pages": [
+    {
+      "id": "page-dc0f65ba",
+      "name": "Upload Workspace",
+      "route": "/",
+      "item_ref": {
+        "index": 0,
+        "text": "Add native InsightSheet Feedback navigation and page with star rating, category selection, validation, successful reset, and lightweight storage structure."
+      },
+      "blocks": [
+        {
+          "id": "nav-sidebar-root",
+          "type": "sidebar",
+          "label": "Sidebar",
+          "hint": "Upload Workspace, Generated Dashboard, Usability Polish",
+          "x": 0,
+          "y": 0,
+          "w": 3,
+          "h": 10,
+          "item_ref": {
+            "index": 0,
+            "text": "Add native InsightSheet Feedback navigation and page with star rating, category selection, validation, successful reset, and lightweight storage structure."
+          },
+          "type_source": "palette"
+        },
+        {
+          "id": "hero-intro",
+          "type": "hero",
+          "label": "InsightSheet intro",
+          "hint": "Product name, plain-English value proposition, and primary upload prompt",
+          "x": 3,
+          "y": 0,
+          "w": 9,
+          "h": 2,
+          "item_ref": {
+            "index": 0,
+            "text": "Add native InsightSheet Feedback navigation and page with star rating, category selection, validation, successful reset, and lightweight storage structure."
+          },
+          "type_source": "palette"
+        },
+        {
+          "id": "upload-form",
+          "type": "form",
+          "label": "Drag-and-drop file upload",
+          "hint": "CSV/Excel upload area with accepted formats and processing status",
+          "x": 3,
+          "y": 2,
+          "w": 5,
+          "h": 4,
+          "item_ref": {
+            "index": 0,
+            "text": "Add native InsightSheet Feedback navigation and page with star rating, category selection, validation, successful reset, and lightweight storage structure."
+          },
+          "type_source": "palette"
+        },
+        {
+          "id": "readiness-card",
+          "type": "text",
+          "label": "Data readiness checklist",
+          "hint": "Detected columns, missing values, date parsing, and cleanup guidance",
+          "x": 8,
+          "y": 2,
+          "w": 4,
+          "h": 4,
+          "item_ref": {
+            "index": 0,
+            "text": "Add native InsightSheet Feedback navigation and page with star rating, category selection, validation, successful reset, and lightweight storage structure."
+          },
+          "type_source": "palette"
+        },
+        {
+          "id": "data-preview",
+          "type": "table",
+          "label": "Cleaned data preview",
+          "hint": "Preview of normalized rows after upload cleanup",
+          "x": 3,
+          "y": 6,
+          "w": 9,
+          "h": 4,
+          "item_ref": {
+            "index": 0,
+            "text": "Add native InsightSheet Feedback navigation and page with star rating, category selection, validation, successful reset, and lightweight storage structure."
+          },
+          "type_source": "palette"
+        }
+      ],
+      "deleted_ids": []
+    },
+    {
+      "id": "page-3ab8ea46",
+      "name": "Generated Dashboard",
+      "route": "/",
+      "item_ref": {
+        "index": 1,
+        "text": "Add native InsightSheet Pricing / Upgrade navigation and page with Free and Pro plans, safe environment-configured checkout redirect, and missing-payment-url handling."
+      },
+      "blocks": [
+        {
+          "id": "nav-sidebar-root",
+          "type": "sidebar",
+          "label": "Sidebar",
+          "hint": "Upload Workspace, Generated Dashboard, Usability Polish",
+          "x": 0,
+          "y": 0,
+          "w": 3,
+          "h": 11,
+          "item_ref": {
+            "index": 1,
+            "text": "Add native InsightSheet Pricing / Upgrade navigation and page with Free and Pro plans, safe environment-configured checkout redirect, and missing-payment-url handling."
+          },
+          "type_source": "palette"
+        },
+        {
+          "id": "summary-hero",
+          "type": "hero",
+          "label": "Plain-English summary",
+          "hint": "Revenue growth narrative and key driver sentence",
+          "x": 3,
+          "y": 0,
+          "w": 9,
+          "h": 2,
+          "item_ref": {
+            "index": 1,
+            "text": "Add native InsightSheet Pricing / Upgrade navigation and page with Free and Pro plans, safe environment-configured checkout redirect, and missing-payment-url handling."
+          },
+          "type_source": "palette"
+        },
+        {
+          "id": "mom-kpi",
+          "type": "kpi",
+          "label": "Month-over-month growth KPI",
+          "hint": "Growth percentage with current/previous month revenue",
+          "x": 3,
+          "y": 2,
+          "w": 3,
+          "h": 2,
+          "item_ref": {
+            "index": 1,
+            "text": "Add native InsightSheet Pricing / Upgrade navigation and page with Free and Pro plans, safe environment-configured checkout redirect, and missing-payment-url handling."
+          },
+          "type_source": "palette"
+        },
+        {
+          "id": "churn-kpi",
+          "type": "kpi",
+          "label": "At-risk customers KPI",
+          "hint": "Count of customers inactive for 60+ days",
+          "x": 6,
+          "y": 2,
+          "w": 3,
+          "h": 2,
+          "item_ref": {
+            "index": 1,
+            "text": "Add native InsightSheet Pricing / Upgrade navigation and page with Free and Pro plans, safe environment-configured checkout redirect, and missing-payment-url handling."
+          },
+          "type_source": "palette"
+        },
+        {
+          "id": "repeat-kpi",
+          "type": "kpi",
+          "label": "Repeat customer KPI",
+          "hint": "Count and percentage of customers with repeat purchases",
+          "x": 9,
+          "y": 2,
+          "w": 3,
+          "h": 2,
+          "item_ref": {
+            "index": 1,
+            "text": "Add native InsightSheet Pricing / Upgrade navigation and page with Free and Pro plans, safe environment-configured checkout redirect, and missing-payment-url handling."
+          },
+          "type_source": "palette"
+        },
+        {
+          "id": "revenue-line",
+          "type": "chart_line",
+          "label": "Revenue over time",
+          "hint": "Line chart showing revenue by month or date bucket",
+          "x": 3,
+          "y": 4,
+          "w": 5,
+          "h": 4,
+          "item_ref": {
+            "index": 1,
+            "text": "Add native InsightSheet Pricing / Upgrade navigation and page with Free and Pro plans, safe environment-configured checkout redirect, and missing-payment-url handling."
+          },
+          "type_source": "palette"
+        },
+        {
+          "id": "top10-bar",
+          "type": "chart_bar",
+          "label": "Top 10 by revenue",
+          "hint": "Visible bars for customers or products ranked by revenue",
+          "x": 8,
+          "y": 4,
+          "w": 4,
+          "h": 4,
+          "item_ref": {
+            "index": 1,
+            "text": "Add native InsightSheet Pricing / Upgrade navigation and page with Free and Pro plans, safe environment-configured checkout redirect, and missing-payment-url handling."
+          },
+          "type_source": "palette"
+        },
+        {
+          "id": "customer-table",
+          "type": "table",
+          "label": "Churn and repeat-customer list",
+          "hint": "Customers with last purchase date, days inactive, and repeat status",
+          "x": 3,
+          "y": 8,
+          "w": 9,
+          "h": 3,
+          "item_ref": {
+            "index": 1,
+            "text": "Add native InsightSheet Pricing / Upgrade navigation and page with Free and Pro plans, safe environment-configured checkout redirect, and missing-payment-url handling."
+          },
+          "type_source": "palette"
+        }
+      ],
+      "deleted_ids": []
+    },
+    {
+      "id": "page-68ff46c4",
+      "name": "Usability Polish",
+      "route": "/",
+      "item_ref": {
+        "index": 2,
+        "text": "Validate existing upload, dashboard, data quality, RFM, forecast, profit, reports, Ask AI, new feedback interactions, pricing behavior, routes, and import safety."
+      },
+      "blocks": [
+        {
+          "id": "nav-sidebar-root",
+          "type": "sidebar",
+          "label": "Sidebar",
+          "hint": "Upload Workspace, Generated Dashboard, Usability Polish",
+          "x": 0,
+          "y": 0,
+          "w": 3,
+          "h": 6,
+          "item_ref": {
+            "index": 2,
+            "text": "Validate existing upload, dashboard, data quality, RFM, forecast, profit, reports, Ask AI, new feedback interactions, pricing behavior, routes, and import safety."
+          },
+          "type_source": "palette"
+        },
+        {
+          "id": "dashboard-controls",
+          "type": "form",
+          "label": "Dashboard controls",
+          "hint": "Select top-10 dimension and time grouping",
+          "x": 3,
+          "y": 0,
+          "w": 9,
+          "h": 1,
+          "item_ref": {
+            "index": 2,
+            "text": "Validate existing upload, dashboard, data quality, RFM, forecast, profit, reports, Ask AI, new feedback interactions, pricing behavior, routes, and import safety."
+          },
+          "type_source": "palette"
+        },
+        {
+          "id": "explanation-card",
+          "type": "text",
+          "label": "How InsightSheet reads your file",
+          "hint": "Plain-language explanation of accepted columns and cleanup assumptions",
+          "x": 3,
+          "y": 1,
+          "w": 4,
+          "h": 3,
+          "item_ref": {
+            "index": 2,
+            "text": "Validate existing upload, dashboard, data quality, RFM, forecast, profit, reports, Ask AI, new feedback interactions, pricing behavior, routes, and import safety."
+          },
+          "type_source": "palette"
+        },
+        {
+          "id": "states-card",
+          "type": "text",
+          "label": "Sample-data and error states",
+          "hint": "Try sample dataset, missing-column guidance, and recovery actions",
+          "x": 7,
+          "y": 1,
+          "w": 4,
+          "h": 3,
+          "item_ref": {
+            "index": 2,
+            "text": "Validate existing upload, dashboard, data quality, RFM, forecast, profit, reports, Ask AI, new feedback interactions, pricing behavior, routes, and import safety."
+          },
+          "type_source": "palette"
+        }
+      ],
+      "deleted_ids": []
+    }
+  ],
+  "attached_to_plan": false
+}
