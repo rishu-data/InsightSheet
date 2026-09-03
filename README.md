@@ -251,7 +251,3 @@ InsightSheet is built to make business analytics more accessible by turning spre
 If you find the project interesting, consider ⭐ starring the repository.
 
 ---
-
-📄 License
-
-Add a license according to how you intend to distribute the project.
