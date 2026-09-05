@@ -390,10 +390,10 @@ def _hero() -> rx.Component:
                 class_name="text-base font-medium text-gray-500 mt-4 max-w-2xl",
             ),
             rx.el.div(
-                rx.el.a(
+                rx.button(
                     rx.icon("cloud-upload", class_name="h-4 w-4"),
                     "Upload a spreadsheet",
-                    href="/upload",
+                    on_click=rx.redirect("/upload"),
                     class_name="flex items-center gap-2 w-fit rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 transition-colors",
                 ),
                 rx.el.a(
@@ -403,9 +403,9 @@ def _hero() -> rx.Component:
                     class_name="flex items-center gap-2 w-fit rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors",
                 ),
                 rx.el.a(
-                    rx.icon("log-in", class_name="h-4 w-4"),
-                    "Sign in",
-                    href="/login",
+                    rx.icon("layout-dashboard", class_name="h-4 w-4"),
+                    "Explore Features",
+                    href="#features",
                     class_name="flex items-center gap-2 w-fit rounded-xl border border-blue-200 bg-blue-50 px-4 py-2.5 text-sm font-semibold text-blue-700 hover:bg-blue-100 transition-colors",
                 ),
                 class_name="flex flex-wrap items-center gap-3 mt-6",
@@ -453,6 +453,7 @@ def _section(
     subtitle: str,
     items: list[tuple[str, str, str]],
     grid: str,
+    section_id: str = "",
 ) -> rx.Component:
     return rx.el.section(
         rx.el.div(
@@ -470,6 +471,7 @@ def _section(
             *_icon_cards(items),
             class_name=grid,
         ),
+        id=section_id,
         class_name="flex flex-col gap-4 w-full",
     )
 
@@ -564,6 +566,7 @@ def home_page() -> rx.Component:
                 "Everything you need to analyse a sales spreadsheet, from cleaning to reporting.",
                 _FEATURES,
                 "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 w-full",
+                "features",
             ),
             _section(
                 "Use Cases",
