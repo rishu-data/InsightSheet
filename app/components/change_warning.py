@@ -5,12 +5,15 @@ from app.states.dashboard_state import DashboardState, QualityCheck
 
 def _check_row(check: QualityCheck) -> rx.Component:
     return rx.el.li(
-        rx.icon(
-            rx.cond(check["flagged"], "triangle-alert", "circle-check"),
-            class_name=rx.cond(
-                check["flagged"],
-                "h-4 w-4 text-yellow-600 shrink-0 mt-0.5",
-                "h-4 w-4 text-green-600 shrink-0 mt-0.5",
+        rx.cond(
+            check["flagged"],
+            rx.icon(
+                "triangle-alert",
+                class_name="h-4 w-4 text-yellow-600 shrink-0 mt-0.5",
+            ),
+            rx.icon(
+                "circle-check",
+                class_name="h-4 w-4 text-green-600 shrink-0 mt-0.5",
             ),
         ),
         rx.el.div(

@@ -8,6 +8,8 @@ import json
 
 import reflex as rx
 
+from app.components.icon import app_icon
+
 HOME_TITLE = "AI-Powered Excel & CSV Analytics | InsightSheet"
 HOME_DESCRIPTION = (
     "Analyze Excel and CSV data with AI-powered dashboards, business insights, "
@@ -430,7 +432,7 @@ def _hero() -> rx.Component:
 def _icon_card(item: tuple[str, str, str]) -> rx.Component:
     return rx.el.div(
         rx.el.div(
-            rx.icon(item[0], class_name="h-4 w-4 text-blue-600"),
+            app_icon(item[0], class_name="h-4 w-4 text-blue-600"),
             class_name="flex items-center justify-center h-9 w-9 rounded-lg bg-blue-50 shrink-0",
         ),
         rx.el.div(

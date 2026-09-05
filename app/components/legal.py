@@ -1,5 +1,7 @@
 import reflex as rx
 
+from app.components.icon import app_icon
+
 REVIEW_NOTE = (
     "This page is written in plain, general-purpose language for transparency. "
     "It is not legal advice and the wording has not been reviewed by a lawyer, "
@@ -101,7 +103,7 @@ _LEGAL_LINKS: list[tuple[str, str, str]] = [
 
 def _related_link(item: tuple[str, str, str]) -> rx.Component:
     return rx.el.a(
-        rx.icon(item[0], class_name="h-3.5 w-3.5 shrink-0"),
+        app_icon(item[0], class_name="h-3.5 w-3.5 shrink-0"),
         rx.el.span(item[1]),
         href=item[2],
         class_name="flex items-center gap-2 w-fit rounded-full border border-gray-200 bg-white px-3.5 py-1.5 text-xs font-medium text-gray-600 hover:border-blue-300 hover:text-blue-700 transition-colors",

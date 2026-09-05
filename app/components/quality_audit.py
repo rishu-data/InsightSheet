@@ -1,5 +1,6 @@
 import reflex as rx
 
+from app.components.icon import app_icon
 from app.states.upload_state import CleaningStep, UploadState
 
 
@@ -250,9 +251,7 @@ def mapping_audit_row() -> rx.Component:
 
 def _derived_row(field: rx.Var) -> rx.Component:
     return rx.el.div(
-        rx.icon(
-            field["icon"], class_name="h-4 w-4 text-indigo-600 shrink-0 mt-0.5"
-        ),
+        app_icon(field["icon"], "h-4 w-4 text-indigo-600 shrink-0 mt-0.5"),
         rx.el.div(
             rx.el.div(
                 rx.el.p(
@@ -307,7 +306,7 @@ def derived_audit_card() -> rx.Component:
 def _log_row(step: CleaningStep) -> rx.Component:
     return rx.el.div(
         rx.el.div(
-            rx.icon(step["icon"], class_name="h-4 w-4"),
+            app_icon(step["icon"], "h-4 w-4"),
             class_name=rx.match(
                 step["tone"],
                 (

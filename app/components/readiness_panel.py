@@ -1,5 +1,6 @@
 import reflex as rx
 
+from app.components.icon import app_icon
 from app.states.upload_state import CleaningStep, UploadState
 
 
@@ -94,7 +95,7 @@ def readiness_panel() -> rx.Component:
 def _log_row(step: CleaningStep) -> rx.Component:
     return rx.el.div(
         rx.el.div(
-            rx.icon(step["icon"], class_name="h-4 w-4"),
+            app_icon(step["icon"], "h-4 w-4"),
             class_name=rx.match(
                 step["tone"],
                 (

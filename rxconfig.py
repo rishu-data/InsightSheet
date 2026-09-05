@@ -42,6 +42,7 @@ config = rx.Config(
     show_reflex_badge=False,
     plugins=[
         rx.plugins.TailwindV4Plugin(),
+        rx.plugins.RadixThemesPlugin(theme=rx.theme(appearance="light")),
         rx.plugins.SitemapPlugin(trailing_slash="preserve"),
         RobotsTxtPlugin(resolved_deploy_url),
     ],

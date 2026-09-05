@@ -1,5 +1,6 @@
 import reflex as rx
 
+from app.components.icon import app_icon
 from app.states.profiler import (
     BusinessColumn,
     CleaningOperation,
@@ -44,7 +45,7 @@ def _score_part(part: ScorePart) -> rx.Component:
     return rx.el.div(
         rx.el.div(
             rx.el.div(
-                rx.icon(part["icon"], class_name="h-3.5 w-3.5 text-blue-600"),
+                app_icon(part["icon"], "h-3.5 w-3.5 text-blue-600"),
                 rx.el.span(
                     part["label"],
                     class_name="text-xs font-semibold text-gray-900",
@@ -207,7 +208,7 @@ def profiler_metric_grid() -> rx.Component:
 
 def _type_chip(item: TypeCount) -> rx.Component:
     return rx.el.span(
-        rx.icon(item["icon"], class_name="h-3.5 w-3.5 text-blue-600"),
+        app_icon(item["icon"], "h-3.5 w-3.5 text-blue-600"),
         rx.el.span(item["label"], class_name="font-semibold text-gray-900"),
         rx.el.span(item["count"], class_name="text-blue-600 font-semibold"),
         class_name="flex items-center gap-2 w-fit rounded-xl border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium",
@@ -217,7 +218,7 @@ def _type_chip(item: TypeCount) -> rx.Component:
 def _business_row(item: BusinessColumn) -> rx.Component:
     return rx.el.div(
         rx.el.div(
-            rx.icon(item["icon"], class_name="h-4 w-4 text-blue-600"),
+            app_icon(item["icon"], "h-4 w-4 text-blue-600"),
             class_name="flex items-center justify-center h-8 w-8 rounded-lg bg-blue-50 shrink-0",
         ),
         rx.el.div(
@@ -448,7 +449,7 @@ def column_profile_card() -> rx.Component:
 def _operation_row(op: CleaningOperation) -> rx.Component:
     return rx.el.div(
         rx.el.div(
-            rx.icon(op["icon"], class_name="h-4 w-4"),
+            app_icon(op["icon"], "h-4 w-4"),
             class_name=rx.cond(
                 op["applied"],
                 "flex items-center justify-center h-8 w-8 rounded-lg bg-blue-100 text-blue-600 shrink-0",

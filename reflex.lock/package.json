@@ -11,7 +11,7 @@
     "isbot": "5.2.1",
     "lucide-react": "1.26.0",
     "mergician": "v2.0.2",
-    "plotly.js": "3.7.0",
+    "plotly.js-basic-dist-min": "3.7.0",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "react-dropzone": "15.0.0",

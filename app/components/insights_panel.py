@@ -1,5 +1,6 @@
 import reflex as rx
 
+from app.components.icon import app_icon
 from app.states.insight_state import Insight, InsightState, Suggestion
 
 
@@ -58,7 +59,7 @@ def _insight_card(item: Insight) -> rx.Component:
     return rx.el.div(
         rx.el.div(
             rx.el.div(
-                rx.icon(item["icon"], class_name="h-4 w-4"),
+                app_icon(item["icon"], "h-4 w-4"),
                 class_name=_tone_icon_wrap(item["tone"]),
             ),
             rx.el.div(
@@ -198,7 +199,7 @@ def _suggestion_card(item: Suggestion) -> rx.Component:
     return rx.el.div(
         rx.el.div(
             rx.el.div(
-                rx.icon(item["icon"], class_name="h-4 w-4 text-indigo-600"),
+                app_icon(item["icon"], "h-4 w-4 text-indigo-600"),
                 class_name="flex items-center justify-center h-8 w-8 rounded-lg bg-indigo-50 shrink-0",
             ),
             rx.el.div(

@@ -18,7 +18,7 @@ def _granularity_button(label: str) -> rx.Component:
 
 def _chart_frame(figure: rx.Var) -> rx.Component:
     return rx.el.div(
-        rx.plotly(
+        rx.plotly.basic(
             data=figure,
             use_resize_handler=True,
             config={"displayModeBar": False, "responsive": True},

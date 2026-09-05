@@ -58,20 +58,17 @@ def index() -> rx.Component:
 
 app = rx.App(
     api_transformer=webhook_api,
-    theme=rx.theme(appearance="light"),
     head_components=[
         rx.el.script(
             src="https://www.googletagmanager.com/gtag/js?id=G-Z3Q8KFCD43",
             async_=True,
         ),
-        rx.el.script(
-            """
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-Z3Q8KFCD43');
-            """
-        ),
+        rx.el.script("""
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', 'G-Z3Q8KFCD43');
+                  """),
         rx.el.meta(
             name="google-site-verification",
             content="XrNMyDksjgrV8Yac6jj-dWw99yxQjvI_317dBMmP2Ys",
@@ -86,6 +83,7 @@ app = rx.App(
             rel="stylesheet",
         ),
     ],
+    theme=rx.theme(appearance="light"),
 )
 app.add_page(
     index,

@@ -1,5 +1,6 @@
 import reflex as rx
 
+from app.components.icon import app_icon
 from app.states.upload_state import UploadState
 
 
@@ -76,9 +77,7 @@ def _pending_row(item: rx.Var) -> rx.Component:
 
 def _derived_row(field: rx.Var) -> rx.Component:
     return rx.el.div(
-        rx.icon(
-            field["icon"], class_name="h-4 w-4 text-indigo-600 shrink-0 mt-0.5"
-        ),
+        app_icon(field["icon"], "h-4 w-4 text-indigo-600 shrink-0 mt-0.5"),
         rx.el.div(
             rx.el.div(
                 rx.el.p(
@@ -296,11 +295,10 @@ def quality_report() -> rx.Component:
                     ),
                     class_name="hidden sm:inline text-xs font-semibold text-blue-700",
                 ),
-                rx.icon(
-                    rx.cond(
-                        UploadState.report_open, "chevron-up", "chevron-down"
-                    ),
-                    class_name="h-4 w-4 text-gray-500",
+                rx.cond(
+                    UploadState.report_open,
+                    rx.icon("chevron-up", class_name="h-4 w-4 text-gray-500"),
+                    rx.icon("chevron-down", class_name="h-4 w-4 text-gray-500"),
                 ),
                 class_name="flex items-center gap-2 shrink-0",
             ),

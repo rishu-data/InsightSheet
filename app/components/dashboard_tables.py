@@ -1,5 +1,6 @@
 import reflex as rx
 
+from app.components.icon import app_icon
 from app.states.dashboard_state import (
     CustomerRow,
     DashboardState,
@@ -200,7 +201,7 @@ def month_over_month_card() -> rx.Component:
 def _bucket_tile(bucket: InactivityBucket) -> rx.Component:
     return rx.el.div(
         rx.el.div(
-            rx.icon(bucket["icon"], class_name="h-4 w-4 text-blue-600"),
+            app_icon(bucket["icon"], "h-4 w-4 text-blue-600"),
             rx.el.span(
                 bucket["label"],
                 class_name="text-xs font-semibold text-gray-600",

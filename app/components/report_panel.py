@@ -1,5 +1,6 @@
 import reflex as rx
 
+from app.components.icon import app_icon
 from app.states.report_state import ReportKPI, ReportSection, ReportState
 
 
@@ -352,7 +353,7 @@ def _section_card(section: ReportSection) -> rx.Component:
     return rx.el.div(
         rx.el.div(
             rx.el.div(
-                rx.icon(section["icon"], class_name="h-4 w-4 text-indigo-600"),
+                app_icon(section["icon"], "h-4 w-4 text-indigo-600"),
                 class_name="flex items-center justify-center h-8 w-8 rounded-lg bg-indigo-50 shrink-0",
             ),
             rx.el.div(

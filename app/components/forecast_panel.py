@@ -356,7 +356,7 @@ def forecast_chart_card() -> rx.Component:
             class_name="flex flex-wrap items-center gap-4 mt-4",
         ),
         rx.el.div(
-            rx.plotly(
+            rx.plotly.basic(
                 data=ForecastState.figure,
                 use_resize_handler=True,
                 config={"displayModeBar": False, "responsive": True},

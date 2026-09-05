@@ -118,9 +118,10 @@ def _answer_card(turn: ChatTurn) -> rx.Component:
     return rx.el.div(
         rx.el.div(
             rx.el.div(
-                rx.icon(
-                    rx.cond(turn["answered"], "sheet", "circle-slash"),
-                    class_name="h-4 w-4",
+                rx.cond(
+                    turn["answered"],
+                    rx.icon("sheet", class_name="h-4 w-4"),
+                    rx.icon("circle-slash", class_name="h-4 w-4"),
                 ),
                 class_name=rx.cond(
                     turn["answered"],

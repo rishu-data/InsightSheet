@@ -1,5 +1,6 @@
 import reflex as rx
 
+from app.components.icon import app_icon
 from app.states.security_state import (
     ManualAction,
     SecurityCheck,
@@ -34,7 +35,7 @@ def _status_badge(check: SecurityCheck) -> rx.Component:
 def _check_card(check: SecurityCheck) -> rx.Component:
     return rx.el.div(
         rx.el.div(
-            rx.icon(check["icon"], class_name="h-4 w-4 text-blue-600"),
+            app_icon(check["icon"], "h-4 w-4 text-blue-600"),
             class_name="flex items-center justify-center h-9 w-9 rounded-lg bg-blue-50 shrink-0",
         ),
         rx.el.div(
@@ -58,9 +59,9 @@ def _check_card(check: SecurityCheck) -> rx.Component:
 
 def _secret_row(check: SecurityCheck) -> rx.Component:
     return rx.el.div(
-        rx.icon(
+        app_icon(
             check["icon"],
-            class_name="h-3.5 w-3.5 text-indigo-600 mt-0.5 shrink-0",
+            "h-3.5 w-3.5 text-indigo-600 mt-0.5 shrink-0",
         ),
         rx.el.div(
             rx.el.p(
@@ -89,7 +90,7 @@ def _manual_card(action: ManualAction) -> rx.Component:
     return rx.el.div(
         rx.el.div(
             rx.el.div(
-                rx.icon(action["icon"], class_name="h-4 w-4 text-yellow-700"),
+                app_icon(action["icon"], "h-4 w-4 text-yellow-700"),
                 class_name="flex items-center justify-center h-9 w-9 rounded-lg bg-yellow-100 shrink-0",
             ),
             rx.el.div(

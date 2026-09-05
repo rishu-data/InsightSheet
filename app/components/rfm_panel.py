@@ -1,5 +1,6 @@
 import reflex as rx
 
+from app.components.icon import app_icon
 from app.states.rfm_state import (
     ALL_SEGMENTS,
     RFMCustomer,
@@ -226,12 +227,15 @@ def scoring_method_card() -> rx.Component:
             class_name="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5",
         ),
         rx.el.div(
-            rx.icon(
-                rx.cond(RFMState.scoring_simplified, "circle-alert", "info"),
-                class_name=rx.cond(
-                    RFMState.scoring_simplified,
-                    "h-4 w-4 text-yellow-600 shrink-0 mt-0.5",
-                    "h-4 w-4 text-indigo-600 shrink-0 mt-0.5",
+            rx.cond(
+                RFMState.scoring_simplified,
+                rx.icon(
+                    "circle-alert",
+                    class_name="h-4 w-4 text-yellow-600 shrink-0 mt-0.5",
+                ),
+                rx.icon(
+                    "info",
+                    class_name="h-4 w-4 text-indigo-600 shrink-0 mt-0.5",
                 ),
             ),
             rx.el.div(
@@ -267,7 +271,7 @@ def _segment_card(segment: RFMSegment) -> rx.Component:
     return rx.el.div(
         rx.el.div(
             rx.el.div(
-                rx.icon(segment["icon"], class_name="h-4 w-4 text-indigo-600"),
+                app_icon(segment["icon"], "h-4 w-4 text-indigo-600"),
                 class_name="flex items-center justify-center h-8 w-8 rounded-lg bg-indigo-50 shrink-0",
             ),
             rx.el.div(
@@ -400,7 +404,7 @@ def segment_distribution_card() -> rx.Component:
             class_name="flex items-start gap-3",
         ),
         rx.el.div(
-            rx.plotly(
+            rx.plotly.basic(
                 data=RFMState.segment_figure,
                 use_resize_handler=True,
                 config={"displayModeBar": False, "responsive": True},
@@ -432,7 +436,7 @@ def segment_revenue_card() -> rx.Component:
             class_name="flex items-start gap-3",
         ),
         rx.el.div(
-            rx.plotly(
+            rx.plotly.basic(
                 data=RFMState.segment_revenue_figure,
                 use_resize_handler=True,
                 config={"displayModeBar": False, "responsive": True},
@@ -462,16 +466,22 @@ def _sortable_th(key: str, icon: str, label: str, right: bool) -> rx.Component:
         rx.el.button(
             rx.icon(icon, class_name="h-3.5 w-3.5 text-gray-400 shrink-0"),
             rx.el.span(label),
-            rx.icon(
+            rx.cond(
+                RFMState.sort_key == key,
                 rx.cond(
-                    RFMState.sort_key == key,
-                    rx.cond(RFMState.sort_desc, "arrow-down", "arrow-up"),
-                    "chevrons-up-down",
+                    RFMState.sort_desc,
+                    rx.icon(
+                        "arrow-down",
+                        class_name="h-3.5 w-3.5 text-indigo-600 shrink-0",
+                    ),
+                    rx.icon(
+                        "arrow-up",
+                        class_name="h-3.5 w-3.5 text-indigo-600 shrink-0",
+                    ),
                 ),
-                class_name=rx.cond(
-                    RFMState.sort_key == key,
-                    "h-3.5 w-3.5 text-indigo-600 shrink-0",
-                    "h-3.5 w-3.5 text-gray-300 shrink-0",
+                rx.icon(
+                    "chevrons-up-down",
+                    class_name="h-3.5 w-3.5 text-gray-300 shrink-0",
                 ),
             ),
             on_click=lambda: RFMState.sort_by(key),
@@ -638,9 +648,10 @@ def _sort_field() -> rx.Component:
                 class_name="relative flex-1 min-w-0",
             ),
             rx.el.button(
-                rx.icon(
-                    rx.cond(RFMState.sort_desc, "arrow-down", "arrow-up"),
-                    class_name="h-4 w-4",
+                rx.cond(
+                    RFMState.sort_desc,
+                    rx.icon("arrow-down", class_name="h-4 w-4"),
+                    rx.icon("arrow-up", class_name="h-4 w-4"),
                 ),
                 rx.el.span(
                     RFMState.sort_direction_label,
@@ -773,7 +784,7 @@ def _insight_card(item: RFMInsight) -> rx.Component:
     return rx.el.div(
         rx.el.div(
             rx.el.div(
-                rx.icon(item["icon"], class_name="h-4 w-4"),
+                app_icon(item["icon"], "h-4 w-4"),
                 class_name=rx.match(
                     item["tone"],
                     (
@@ -887,7 +898,7 @@ def _recommendation_card(item: RFMRecommendation) -> rx.Component:
     return rx.el.div(
         rx.el.div(
             rx.el.div(
-                rx.icon(item["icon"], class_name="h-4 w-4 text-indigo-600"),
+                app_icon(item["icon"], "h-4 w-4 text-indigo-600"),
                 class_name="flex items-center justify-center h-8 w-8 rounded-lg bg-indigo-50 shrink-0",
             ),
             rx.el.div(
