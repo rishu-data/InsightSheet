@@ -99,11 +99,13 @@ app.add_page(
     route="/upload",
     meta=NOINDEX,
     on_load=[AuthState.check_session, SubscriptionState.load_status],
+    context={"sitemap": None},
 )
 app.add_page(
     dashboard_page,
     route="/dashboard",
     meta=NOINDEX,
+    context={"sitemap": None},
     on_load=[
         AuthState.check_session,
         SubscriptionState.load_status,
@@ -121,12 +123,14 @@ app.add_page(
     data_quality_page,
     route="/data-quality",
     meta=NOINDEX,
+    context={"sitemap": None},
     on_load=[AuthState.check_session, SubscriptionState.load_status],
 )
 app.add_page(
     feedback_page,
     route="/feedback",
     meta=NOINDEX,
+    context={"sitemap": None},
     on_load=[
         AuthState.check_session,
         SubscriptionState.load_status,
@@ -156,17 +160,20 @@ app.add_page(
 app.add_page(
     refund_page,
     route="/refund-policy",
+    context={"sitemap": None},
     on_load=[AuthState.check_session, SubscriptionState.load_status],
 )
 app.add_page(
     payment_terms_page,
     route="/payment-terms",
+    context={"sitemap": None},
     on_load=[AuthState.check_session, SubscriptionState.load_status],
 )
 app.add_page(
     security_readiness_page,
     route="/security-readiness",
     meta=NOINDEX,
+    context={"sitemap": None},
     on_load=[
         AuthState.check_session,
         SubscriptionState.load_status,
@@ -182,11 +189,13 @@ app.add_page(
     login_page,
     route="/login",
     meta=NOINDEX,
+    context={"sitemap": None},
     on_load=AuthState.check_session,
 )
 app.add_page(
     signup_page,
     route="/signup",
     meta=NOINDEX,
+    context={"sitemap": None},
     on_load=AuthState.check_session,
 )
