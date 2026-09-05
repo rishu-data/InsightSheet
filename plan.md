@@ -1,4 +1,4 @@
-## Refresh Button Audit Plan
-- [x] Audit every existing refresh, reload, retry, and refresh-data control across the app and identify the exact data/state each one should refresh.
-- [x] Fix refresh controls that are no-op or incomplete so they re-fetch/recompute the correct backend or uploaded-dataset state with loading/error handling and duplicate-request protection.
-- [x] Verify the fixed controls with targeted event tests and desktop/mobile screenshots, then report every found component with PASS/FAIL status.
+## Public SEO Plan
+- [x] Add a lightweight public homepage with the required content sections, crawlable links to existing public pages, unique metadata, canonical markup, and truthful WebSite and SoftwareApplication structured data while preserving the current visual language.
+- [x] Apply noindex metadata to private application and account routes without changing authentication or application behavior.
+- [x] Serve public-only robots.txt and sitemap.xml responses, then validate crawler endpoints, public routes, private metadata, and the existing dashboard route.

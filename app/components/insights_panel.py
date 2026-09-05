@@ -353,7 +353,7 @@ def insights_unavailable() -> rx.Component:
         rx.el.a(
             rx.icon("columns-3", class_name="h-4 w-4"),
             "Adjust column mapping",
-            href="/",
+            href="/upload",
             class_name="flex items-center gap-2 w-fit rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-indigo-700 transition-colors mt-4",
         ),
         class_name="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm w-full",

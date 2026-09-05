@@ -25,7 +25,7 @@ from typing import Any
 
 import reflex as rx
 from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, PlainTextResponse, Response
 from sqlalchemy import func, select
 from sqlalchemy.exc import IntegrityError
 
@@ -510,3 +510,82 @@ async def razorpay_webhook(request: Request) -> JSONResponse:
 async def razorpay_webhook_probe() -> JSONResponse:
     """Razorpay only POSTs here; answer probes without leaking configuration."""
     return _json(405, "Use POST for webhook deliveries.")
+
+
+# ---------------------------------------------------------------------------
+# Public crawler endpoints (no invented hostname: everything is derived from
+# the incoming request base URL).
+# ---------------------------------------------------------------------------
+
+PUBLIC_ROUTES: tuple[str, ...] = (
+    "/",
+    "/about",
+    "/pricing",
+    "/privacy",
+    "/terms",
+    "/refund-policy",
+    "/payment-terms",
+    "/support",
+)
+
+PRIVATE_ROUTES: tuple[str, ...] = (
+    "/upload",
+    "/dashboard",
+    "/data-quality",
+    "/feedback",
+    "/security-readiness",
+    "/login",
+    "/signup",
+    "/api/",
+)
+
+
+def _site_base(request: Request) -> str:
+    """Origin of the incoming request, without a trailing slash."""
+    try:
+        return str(request.base_url).rstrip("/")
+    except Exception as e:
+        logging.exception(f"Could not read request base URL: {e}")
+        return ""
+
+
+def build_robots_txt(base_url: str) -> str:
+    lines = ["User-agent: *", "Allow: /"]
+    lines.extend(f"Disallow: {path}" for path in PRIVATE_ROUTES)
+    if base_url:
+        lines.append(f"Sitemap: {base_url}/sitemap.xml")
+    return "\n".join(lines) + "\n"
+
+
+def build_sitemap_xml(base_url: str) -> str:
+    from xml.sax.saxutils import escape
+
+    entries = []
+    for path in PUBLIC_ROUTES:
+        loc = f"{base_url}{path}" if base_url else path
+        entries.append(f"  <url><loc>{escape(loc)}</loc></url>")
+    body = "\n".join(entries)
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f"{body}\n"
+        "</urlset>\n"
+    )
+
+
+@webhook_api.get("/robots.txt", include_in_schema=False)
+async def robots_txt(request: Request) -> PlainTextResponse:
+    """Allow public crawling, keep application routes out of the index."""
+    return PlainTextResponse(
+        content=build_robots_txt(_site_base(request)),
+        media_type="text/plain; charset=utf-8",
+    )
+
+
+@webhook_api.get("/sitemap.xml", include_in_schema=False)
+async def sitemap_xml(request: Request) -> Response:
+    """List only the public pages that actually exist."""
+    return Response(
+        content=build_sitemap_xml(_site_base(request)),
+        media_type="application/xml",
+    )

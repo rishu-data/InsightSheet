@@ -636,13 +636,13 @@ def forecast_unavailable() -> rx.Component:
             rx.el.a(
                 rx.icon("cloud-upload", class_name="h-4 w-4"),
                 "Upload a longer export",
-                href="/",
+                href="/upload",
                 class_name="flex items-center gap-2 w-fit rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-indigo-700 transition-colors",
             ),
             rx.el.a(
                 rx.icon("columns-3", class_name="h-4 w-4"),
                 "Adjust column mapping",
-                href="/",
+                href="/upload",
                 class_name="flex items-center gap-2 w-fit rounded-xl border border-indigo-200 bg-indigo-50 px-4 py-2.5 text-sm font-semibold text-indigo-700 hover:bg-indigo-100 transition-colors",
             ),
             class_name="flex flex-wrap items-center gap-3 mt-4",

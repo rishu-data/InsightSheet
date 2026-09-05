@@ -26,7 +26,7 @@ def _empty_state() -> rx.Component:
             rx.el.a(
                 rx.icon("cloud-upload", class_name="h-4 w-4"),
                 "Go to upload",
-                href="/",
+                href="/upload",
                 class_name="flex items-center gap-2 w-fit rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 transition-colors",
             ),
             rx.el.button(

@@ -76,7 +76,7 @@ class PricingState(rx.State):
     def start_free(self):
         """Free plan requires no payment — go straight to the upload workflow."""
         self.notice = ""
-        return rx.redirect("/")
+        return rx.redirect("/upload")
 
     @rx.event
     def upgrade_to_pro(self):

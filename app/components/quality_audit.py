@@ -237,7 +237,7 @@ def mapping_audit_row() -> rx.Component:
                 rx.el.a(
                     rx.icon("columns-3", class_name="h-4 w-4"),
                     "Change column mapping",
-                    href="/",
+                    href="/upload",
                     class_name="flex items-center gap-2 w-fit rounded-xl border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors mt-4",
                 ),
                 class_name="w-full rounded-2xl border border-gray-200 bg-white p-5 shadow-sm",
@@ -435,7 +435,7 @@ def audit_unavailable() -> rx.Component:
             rx.el.a(
                 rx.icon("cloud-upload", class_name="h-4 w-4"),
                 "Go to upload",
-                href="/",
+                href="/upload",
                 class_name="flex items-center gap-2 w-fit rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 transition-colors",
             ),
             rx.el.a(

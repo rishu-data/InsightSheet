@@ -97,7 +97,10 @@ def sidebar(active: str) -> rx.Component:
         ),
         rx.el.nav(
             _nav_item(
-                "cloud-upload", "Upload New File", "/", active == "upload"
+                "cloud-upload",
+                "Upload New File",
+                "/upload",
+                active == "upload",
             ),
             _nav_item(
                 "layout-dashboard",
@@ -192,7 +195,7 @@ def _top_bar(active: str, title: str, subtitle: str) -> rx.Component:
             class_name="flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 h-16",
         ),
         rx.el.div(
-            _pill("cloud-upload", "Upload", "/", active == "upload"),
+            _pill("cloud-upload", "Upload", "/upload", active == "upload"),
             _pill(
                 "layout-dashboard",
                 "Dashboard",
