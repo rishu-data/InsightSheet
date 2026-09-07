@@ -4,6 +4,11 @@ from app.pages.about import about_page
 from app.pages.auth import login_page, signup_page
 from app.pages.dashboard import dashboard_page
 from app.pages.data_quality import data_quality_page
+from app.pages.excel_analyzer import (
+    EXCEL_ANALYZER_DESCRIPTION,
+    EXCEL_ANALYZER_TITLE,
+    excel_analyzer_page,
+)
 from app.pages.feedback import feedback_page
 from app.pages.home import HOME_DESCRIPTION, HOME_TITLE, home_page
 from app.pages.legal import (
@@ -139,6 +144,12 @@ app.add_page(
     pricing_page,
     route="/pricing",
     on_load=[AuthState.check_session, SubscriptionState.load_status],
+)
+app.add_page(
+    excel_analyzer_page,
+    route="/tools/excel-analyzer",
+    title=EXCEL_ANALYZER_TITLE,
+    description=EXCEL_ANALYZER_DESCRIPTION,
 )
 app.add_page(
     about_page,
