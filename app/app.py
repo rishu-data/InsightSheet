@@ -2,6 +2,11 @@ import reflex as rx
 
 from app.pages.about import about_page
 from app.pages.auth import login_page, signup_page
+from app.pages.csv_analyzer import (
+    CSV_ANALYZER_DESCRIPTION,
+    CSV_ANALYZER_TITLE,
+    csv_analyzer_page,
+)
 from app.pages.dashboard import dashboard_page
 from app.pages.data_quality import data_quality_page
 from app.pages.excel_analyzer import (
@@ -150,6 +155,12 @@ app.add_page(
     route="/tools/excel-analyzer",
     title=EXCEL_ANALYZER_TITLE,
     description=EXCEL_ANALYZER_DESCRIPTION,
+)
+app.add_page(
+    csv_analyzer_page,
+    route="/tools/csv-analyzer",
+    title=CSV_ANALYZER_TITLE,
+    description=CSV_ANALYZER_DESCRIPTION,
 )
 app.add_page(
     about_page,
