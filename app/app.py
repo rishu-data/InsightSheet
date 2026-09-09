@@ -24,6 +24,11 @@ from app.pages.legal import (
     terms_page,
 )
 from app.pages.pricing import pricing_page
+from app.pages.rfm_calculator import (
+    RFM_CALCULATOR_DESCRIPTION,
+    RFM_CALCULATOR_TITLE,
+    rfm_calculator_page,
+)
 from app.pages.security import security_readiness_page
 from app.pages.upload import upload_page
 from app.razorpay_webhook import webhook_api
@@ -161,6 +166,12 @@ app.add_page(
     route="/tools/csv-analyzer",
     title=CSV_ANALYZER_TITLE,
     description=CSV_ANALYZER_DESCRIPTION,
+)
+app.add_page(
+    rfm_calculator_page,
+    route="/tools/rfm-calculator",
+    title=RFM_CALCULATOR_TITLE,
+    description=RFM_CALCULATOR_DESCRIPTION,
 )
 app.add_page(
     about_page,
