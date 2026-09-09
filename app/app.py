@@ -24,6 +24,11 @@ from app.pages.legal import (
     terms_page,
 )
 from app.pages.pricing import pricing_page
+from app.pages.profit_margin_calculator import (
+    PROFIT_MARGIN_DESCRIPTION,
+    PROFIT_MARGIN_TITLE,
+    profit_margin_calculator_page,
+)
 from app.pages.rfm_calculator import (
     RFM_CALCULATOR_DESCRIPTION,
     RFM_CALCULATOR_TITLE,
@@ -172,6 +177,12 @@ app.add_page(
     route="/tools/rfm-calculator",
     title=RFM_CALCULATOR_TITLE,
     description=RFM_CALCULATOR_DESCRIPTION,
+)
+app.add_page(
+    profit_margin_calculator_page,
+    route="/tools/profit-margin-calculator",
+    title=PROFIT_MARGIN_TITLE,
+    description=PROFIT_MARGIN_DESCRIPTION,
 )
 app.add_page(
     about_page,
