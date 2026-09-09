@@ -34,6 +34,11 @@ from app.pages.rfm_calculator import (
     RFM_CALCULATOR_TITLE,
     rfm_calculator_page,
 )
+from app.pages.sales_growth_calculator import (
+    SALES_GROWTH_DESCRIPTION,
+    SALES_GROWTH_TITLE,
+    sales_growth_calculator_page,
+)
 from app.pages.security import security_readiness_page
 from app.pages.upload import upload_page
 from app.razorpay_webhook import webhook_api
@@ -183,6 +188,12 @@ app.add_page(
     route="/tools/profit-margin-calculator",
     title=PROFIT_MARGIN_TITLE,
     description=PROFIT_MARGIN_DESCRIPTION,
+)
+app.add_page(
+    sales_growth_calculator_page,
+    route="/tools/sales-growth-calculator",
+    title=SALES_GROWTH_TITLE,
+    description=SALES_GROWTH_DESCRIPTION,
 )
 app.add_page(
     about_page,
