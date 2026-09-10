@@ -9,6 +9,11 @@ from app.pages.csv_analyzer import (
 )
 from app.pages.dashboard import dashboard_page
 from app.pages.data_quality import data_quality_page
+from app.pages.excel_analytics_solution import (
+    EXCEL_ANALYTICS_DESCRIPTION,
+    EXCEL_ANALYTICS_TITLE,
+    excel_analytics_solution_page,
+)
 from app.pages.excel_analyzer import (
     EXCEL_ANALYZER_DESCRIPTION,
     EXCEL_ANALYZER_TITLE,
@@ -175,6 +180,12 @@ app.add_page(
     route="/tools/excel-analyzer",
     title=EXCEL_ANALYZER_TITLE,
     description=EXCEL_ANALYZER_DESCRIPTION,
+)
+app.add_page(
+    excel_analytics_solution_page,
+    route="/solutions/excel-analytics",
+    title=EXCEL_ANALYTICS_TITLE,
+    description=EXCEL_ANALYTICS_DESCRIPTION,
 )
 app.add_page(
     csv_analyzer_page,
