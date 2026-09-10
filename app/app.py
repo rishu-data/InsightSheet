@@ -34,6 +34,11 @@ from app.pages.profit_margin_calculator import (
     PROFIT_MARGIN_TITLE,
     profit_margin_calculator_page,
 )
+from app.pages.sales_analytics_solution import (
+    SALES_ANALYTICS_DESCRIPTION,
+    SALES_ANALYTICS_TITLE,
+    sales_analytics_solution_page,
+)
 from app.pages.rfm_calculator import (
     RFM_CALCULATOR_DESCRIPTION,
     RFM_CALCULATOR_TITLE,
@@ -186,6 +191,12 @@ app.add_page(
     route="/solutions/excel-analytics",
     title=EXCEL_ANALYTICS_TITLE,
     description=EXCEL_ANALYTICS_DESCRIPTION,
+)
+app.add_page(
+    sales_analytics_solution_page,
+    route="/solutions/sales-analytics",
+    title=SALES_ANALYTICS_TITLE,
+    description=SALES_ANALYTICS_DESCRIPTION,
 )
 app.add_page(
     csv_analyzer_page,
