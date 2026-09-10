@@ -34,6 +34,11 @@ from app.pages.rfm_calculator import (
     RFM_CALCULATOR_TITLE,
     rfm_calculator_page,
 )
+from app.pages.sales_forecasting import (
+    SALES_FORECASTING_DESCRIPTION,
+    SALES_FORECASTING_TITLE,
+    sales_forecasting_page,
+)
 from app.pages.sales_growth_calculator import (
     SALES_GROWTH_DESCRIPTION,
     SALES_GROWTH_TITLE,
@@ -194,6 +199,12 @@ app.add_page(
     route="/tools/sales-growth-calculator",
     title=SALES_GROWTH_TITLE,
     description=SALES_GROWTH_DESCRIPTION,
+)
+app.add_page(
+    sales_forecasting_page,
+    route="/tools/sales-forecasting",
+    title=SALES_FORECASTING_TITLE,
+    description=SALES_FORECASTING_DESCRIPTION,
 )
 app.add_page(
     about_page,
