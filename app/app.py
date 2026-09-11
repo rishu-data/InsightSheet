@@ -60,6 +60,11 @@ from app.pages.sales_growth_calculator import (
     sales_growth_calculator_page,
 )
 from app.pages.security import security_readiness_page
+from app.pages.small_business_analytics_solution import (
+    SMALL_BUSINESS_ANALYTICS_DESCRIPTION,
+    SMALL_BUSINESS_ANALYTICS_TITLE,
+    small_business_analytics_solution_page,
+)
 from app.pages.upload import upload_page
 from app.razorpay_webhook import webhook_api
 from app.states.ask_state import AskState
@@ -208,6 +213,12 @@ app.add_page(
     route="/solutions/customer-analytics",
     title=CUSTOMER_ANALYTICS_TITLE,
     description=CUSTOMER_ANALYTICS_DESCRIPTION,
+)
+app.add_page(
+    small_business_analytics_solution_page,
+    route="/solutions/small-business-analytics",
+    title=SMALL_BUSINESS_ANALYTICS_TITLE,
+    description=SMALL_BUSINESS_ANALYTICS_DESCRIPTION,
 )
 app.add_page(
     csv_analyzer_page,
