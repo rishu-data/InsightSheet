@@ -7,6 +7,11 @@ from app.pages.csv_analyzer import (
     CSV_ANALYZER_TITLE,
     csv_analyzer_page,
 )
+from app.pages.customer_analytics_solution import (
+    CUSTOMER_ANALYTICS_DESCRIPTION,
+    CUSTOMER_ANALYTICS_TITLE,
+    customer_analytics_solution_page,
+)
 from app.pages.dashboard import dashboard_page
 from app.pages.data_quality import data_quality_page
 from app.pages.excel_analytics_solution import (
@@ -197,6 +202,12 @@ app.add_page(
     route="/solutions/sales-analytics",
     title=SALES_ANALYTICS_TITLE,
     description=SALES_ANALYTICS_DESCRIPTION,
+)
+app.add_page(
+    customer_analytics_solution_page,
+    route="/solutions/customer-analytics",
+    title=CUSTOMER_ANALYTICS_TITLE,
+    description=CUSTOMER_ANALYTICS_DESCRIPTION,
 )
 app.add_page(
     csv_analyzer_page,
