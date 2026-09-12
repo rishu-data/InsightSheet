@@ -14,6 +14,7 @@ from datetime import datetime
 from sqlalchemy import (
     Boolean,
     DateTime,
+    false,
     Enum,
     ForeignKey,
     Index,
@@ -43,7 +44,10 @@ class User(Base):
     """
 
     __tablename__ = "app_user"
-    __table_args__ = (Index("ix_app_user_is_active", "is_active"),)
+    __table_args__ = (
+        Index("ix_app_user_is_active", "is_active"),
+        Index("ix_app_user_is_admin", "is_admin"),
+    )
 
     id: Mapped[int] = mapped_column(primary_key=True, init=False)
 
@@ -65,6 +69,15 @@ class User(Base):
     )
 
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
+
+    # Admin authorization is stored explicitly and NEVER inferred from plan,
+    # subscription, email domain, signup order or any client-supplied state.
+    # Both Python and the database server default to False, so every existing
+    # and future account is denied admin access until manually promoted.
+    is_admin: Mapped[bool] = mapped_column(
+        Boolean, default=False, nullable=False, server_default=false()
+    )
+
     last_login_at: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True), default=None, nullable=True
     )
@@ -132,6 +145,14 @@ class UserSession(Base):
     )
 
 
+class FeedbackStatus(enum.StrEnum):
+    """Admin review state of a feedback submission."""
+
+    NEW = "NEW"
+    REVIEWED = "REVIEWED"
+    RESOLVED = "RESOLVED"
+
+
 class Feedback(Base):
     """One feedback submission belonging to a single user.
 
@@ -141,6 +162,8 @@ class Feedback(Base):
     __tablename__ = "app_feedback"
     __table_args__ = (
         Index("ix_app_feedback_user_submitted", "user_id", "submitted_at"),
+        Index("ix_app_feedback_status", "status"),
+        Index("ix_app_feedback_status_submitted", "status", "submitted_at"),
     )
 
     id: Mapped[int] = mapped_column(primary_key=True, init=False)
@@ -152,6 +175,21 @@ class Feedback(Base):
     rating: Mapped[int] = mapped_column(Integer)
     category: Mapped[str] = mapped_column(String(64))
     message: Mapped[str] = mapped_column(Text)
+
+    # Constrained review status: exactly NEW, REVIEWED or RESOLVED. Existing
+    # and future rows default to NEW in Python and at the database server.
+    status: Mapped[FeedbackStatus] = mapped_column(
+        Enum(
+            FeedbackStatus,
+            name="app_feedback_status",
+            native_enum=False,
+            validate_strings=True,
+            length=16,
+        ),
+        default=FeedbackStatus.NEW,
+        nullable=False,
+        server_default=FeedbackStatus.NEW.value,
+    )
 
     submitted_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), init=False, server_default=func.now()

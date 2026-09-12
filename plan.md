@@ -1,4 +1,5 @@
-## Public SEO Plan
-- [x] Add a lightweight public homepage with the required content sections, crawlable links to existing public pages, unique metadata, canonical markup, and truthful WebSite and SoftwareApplication structured data while preserving the current visual language.
-- [x] Apply noindex metadata to private application and account routes without changing authentication or application behavior.
-- [x] Serve public-only robots.txt and sitemap.xml responses, then validate crawler endpoints, public routes, private metadata, and the existing dashboard route.
+## Admin Control Center Plan
+- [x] Add database-backed admin authorization and feedback review status to the existing account and feedback models, defaulting every account to non-admin and preserving current authentication and feedback behavior.
+- [x] Build the protected `/admin` control center with a responsive InsightSheet-style sidebar, real overview metrics, server-paginated user search and filters, and safe per-user account summaries.
+- [x] Add admin-only feedback review actions plus purchases, subscriptions, and revenue views sourced from existing Razorpay subscription and verified webhook records without exposing sensitive fields.
+- [x] Add the usage availability view, secure empty/error/loading states, private-route SEO exclusion, and validate authorization, database-backed data, existing workflows, and production compilation.

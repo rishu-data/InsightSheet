@@ -1,6 +1,7 @@
 import reflex as rx
 
 from app.pages.about import about_page
+from app.pages.admin import ADMIN_TITLE, admin_page
 from app.pages.auth import login_page, signup_page
 from app.pages.csv_analyzer import (
     CSV_ANALYZER_DESCRIPTION,
@@ -67,6 +68,7 @@ from app.pages.small_business_analytics_solution import (
 )
 from app.pages.upload import upload_page
 from app.razorpay_webhook import webhook_api
+from app.states.admin_state import AdminState
 from app.states.ask_state import AskState
 from app.states.auth_state import AuthState
 from app.states.dashboard_state import DashboardState
@@ -292,6 +294,14 @@ app.add_page(
     support_page,
     route="/support",
     on_load=[AuthState.check_session, SubscriptionState.load_status],
+)
+app.add_page(
+    admin_page,
+    route="/admin",
+    title=ADMIN_TITLE,
+    meta=NOINDEX,
+    context={"sitemap": None},
+    on_load=AdminState.load_admin,
 )
 app.add_page(
     login_page,
