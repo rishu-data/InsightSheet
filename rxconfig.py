@@ -8,6 +8,7 @@ DEPLOY_URL = "https://reflex-build-generation-silver-apple.reflex.run"
 
 ROBOTS_DISALLOWED: tuple[str, ...] = (
     "/upload",
+    "/account",
     "/dashboard",
     "/data-quality",
     "/feedback",

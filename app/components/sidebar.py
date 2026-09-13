@@ -120,6 +120,16 @@ def sidebar(active: str) -> rx.Component:
                 "/feedback",
                 active == "feedback",
             ),
+            rx.cond(
+                AuthState.is_authenticated,
+                _nav_item(
+                    "user",
+                    "My Account",
+                    "/account",
+                    active == "account",
+                ),
+                rx.fragment(),
+            ),
             _nav_item(
                 "credit-card",
                 "Pricing / Upgrade",
@@ -213,6 +223,11 @@ def _top_bar(active: str, title: str, subtitle: str) -> rx.Component:
                 "Feedback",
                 "/feedback",
                 active == "feedback",
+            ),
+            rx.cond(
+                AuthState.is_authenticated,
+                _pill("user", "My Account", "/account", active == "account"),
+                rx.fragment(),
             ),
             _pill("credit-card", "Pricing", "/pricing", active == "pricing"),
             _pill("info", "About", "/about", active == "about"),

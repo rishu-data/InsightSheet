@@ -1,5 +1,3 @@
-## Admin Control Center Plan
-- [x] Add database-backed admin authorization and feedback review status to the existing account and feedback models, defaulting every account to non-admin and preserving current authentication and feedback behavior.
-- [x] Build the protected `/admin` control center with a responsive InsightSheet-style sidebar, real overview metrics, server-paginated user search and filters, and safe per-user account summaries.
-- [x] Add admin-only feedback review actions plus purchases, subscriptions, and revenue views sourced from existing Razorpay subscription and verified webhook records without exposing sensitive fields.
-- [x] Add the usage availability view, secure empty/error/loading states, private-route SEO exclusion, and validate authorization, database-backed data, existing workflows, and production compilation.
+## My Account Dashboard Plan
+- [x] Build the protected `/account` dashboard in the existing InsightSheet visual language, with server-scoped Profile, Current Plan, Billing & Purchases, and honest persisted Activity sections using the current account, subscription, payment, session, and feedback data.
+- [x] Add the user’s feedback history and existing feedback submission flow, account actions, authenticated navigation links, secure loading/empty/error states, and validate account isolation plus existing login, admin, upload, analytics, dashboard, Razorpay, and subscription workflows.

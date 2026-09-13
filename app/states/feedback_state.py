@@ -156,22 +156,24 @@ class FeedbackState(rx.State):
             ),
         )
 
-    @rx.event
-    async def load_feedback(self):
-        """Load only the signed-in user's own saved feedback."""
-        user_id, _email = await current_user(self)
-        self.signed_in = user_id > 0
-        if not user_id:
+    async def _load_history_for(self, user_id: int) -> None:
+        """Private, user-scoped history loader.
+
+        Only ever called with a server-resolved account id — never with an
+        identifier supplied by the browser. Reused by `/feedback` and by the
+        account dashboard so there is a single query path.
+        """
+        owner_id = int(user_id or 0)
+        self.signed_in = owner_id > 0
+        if owner_id <= 0:
             self.entries = []
             return
-        self.is_loading = True
-        yield
         try:
             async with rx.asession() as session:
                 rows = (
                     await session.scalars(
                         select(Feedback)
-                        .where(Feedback.user_id == user_id)
+                        .where(Feedback.user_id == owner_id)
                         .order_by(
                             Feedback.submitted_at.desc(), Feedback.id.desc()
                         )
@@ -186,6 +188,19 @@ class FeedbackState(rx.State):
                 "We couldn't load your feedback history just now. "
                 "Please refresh and try again."
             )
+
+    @rx.event
+    async def load_feedback(self):
+        """Load only the signed-in user's own saved feedback."""
+        user_id, _email = await current_user(self)
+        self.signed_in = user_id > 0
+        if not user_id:
+            self.entries = []
+            return
+        self.is_loading = True
+        yield
+        try:
+            await self._load_history_for(int(user_id))
         finally:
             self.is_loading = False
 
