@@ -12,7 +12,7 @@
       "route": "/",
       "item_ref": {
         "index": 0,
-        "text": "Add native InsightSheet Feedback navigation and page with star rating, category selection, validation, successful reset, and lightweight storage structure."
+        "text": "Build the protected `/account` dashboard in the existing InsightSheet visual language, with server-scoped Profile, Current Plan, Billing & Purchases, and honest persisted Activity sections using the current account, subscription, payment, session, and feedback data."
       },
       "blocks": [
         {
@@ -26,7 +26,7 @@
           "h": 10,
           "item_ref": {
             "index": 0,
-            "text": "Add native InsightSheet Feedback navigation and page with star rating, category selection, validation, successful reset, and lightweight storage structure."
+            "text": "Build the protected `/account` dashboard in the existing InsightSheet visual language, with server-scoped Profile, Current Plan, Billing & Purchases, and honest persisted Activity sections using the current account, subscription, payment, session, and feedback data."
           },
           "type_source": "palette"
         },
@@ -41,7 +41,7 @@
           "h": 2,
           "item_ref": {
             "index": 0,
-            "text": "Add native InsightSheet Feedback navigation and page with star rating, category selection, validation, successful reset, and lightweight storage structure."
+            "text": "Build the protected `/account` dashboard in the existing InsightSheet visual language, with server-scoped Profile, Current Plan, Billing & Purchases, and honest persisted Activity sections using the current account, subscription, payment, session, and feedback data."
           },
           "type_source": "palette"
         },
@@ -56,7 +56,7 @@
           "h": 4,
           "item_ref": {
             "index": 0,
-            "text": "Add native InsightSheet Feedback navigation and page with star rating, category selection, validation, successful reset, and lightweight storage structure."
+            "text": "Build the protected `/account` dashboard in the existing InsightSheet visual language, with server-scoped Profile, Current Plan, Billing & Purchases, and honest persisted Activity sections using the current account, subscription, payment, session, and feedback data."
           },
           "type_source": "palette"
         },
@@ -71,7 +71,7 @@
           "h": 4,
           "item_ref": {
             "index": 0,
-            "text": "Add native InsightSheet Feedback navigation and page with star rating, category selection, validation, successful reset, and lightweight storage structure."
+            "text": "Build the protected `/account` dashboard in the existing InsightSheet visual language, with server-scoped Profile, Current Plan, Billing & Purchases, and honest persisted Activity sections using the current account, subscription, payment, session, and feedback data."
           },
           "type_source": "palette"
         },
@@ -86,7 +86,7 @@
           "h": 4,
           "item_ref": {
             "index": 0,
-            "text": "Add native InsightSheet Feedback navigation and page with star rating, category selection, validation, successful reset, and lightweight storage structure."
+            "text": "Build the protected `/account` dashboard in the existing InsightSheet visual language, with server-scoped Profile, Current Plan, Billing & Purchases, and honest persisted Activity sections using the current account, subscription, payment, session, and feedback data."
           },
           "type_source": "palette"
         }
@@ -99,11 +99,11 @@
       "route": "/",
       "item_ref": {
         "index": 1,
-        "text": "Add native InsightSheet Pricing / Upgrade navigation and page with Free and Pro plans, safe environment-configured checkout redirect, and missing-payment-url handling."
+        "text": "Add the user’s feedback history and existing feedback submission flow, account actions, authenticated navigation links, secure loading/empty/error states, and validate account isolation plus existing login, admin, upload, analytics, dashboard, Razorpay, and subscription workflows."
       },
       "blocks": [
         {
-          "id": "nav-sidebar-root",
+          "id": "blk-672541a3",
           "type": "sidebar",
           "label": "Sidebar",
           "hint": "Upload Workspace, Generated Dashboard, Usability Polish",
@@ -113,7 +113,7 @@
           "h": 11,
           "item_ref": {
             "index": 1,
-            "text": "Add native InsightSheet Pricing / Upgrade navigation and page with Free and Pro plans, safe environment-configured checkout redirect, and missing-payment-url handling."
+            "text": "Add the user’s feedback history and existing feedback submission flow, account actions, authenticated navigation links, secure loading/empty/error states, and validate account isolation plus existing login, admin, upload, analytics, dashboard, Razorpay, and subscription workflows."
           },
           "type_source": "palette"
         },
@@ -128,7 +128,7 @@
           "h": 2,
           "item_ref": {
             "index": 1,
-            "text": "Add native InsightSheet Pricing / Upgrade navigation and page with Free and Pro plans, safe environment-configured checkout redirect, and missing-payment-url handling."
+            "text": "Add the user’s feedback history and existing feedback submission flow, account actions, authenticated navigation links, secure loading/empty/error states, and validate account isolation plus existing login, admin, upload, analytics, dashboard, Razorpay, and subscription workflows."
           },
           "type_source": "palette"
         },
@@ -143,7 +143,7 @@
           "h": 2,
           "item_ref": {
             "index": 1,
-            "text": "Add native InsightSheet Pricing / Upgrade navigation and page with Free and Pro plans, safe environment-configured checkout redirect, and missing-payment-url handling."
+            "text": "Add the user’s feedback history and existing feedback submission flow, account actions, authenticated navigation links, secure loading/empty/error states, and validate account isolation plus existing login, admin, upload, analytics, dashboard, Razorpay, and subscription workflows."
           },
           "type_source": "palette"
         },
@@ -158,7 +158,7 @@
           "h": 2,
           "item_ref": {
             "index": 1,
-            "text": "Add native InsightSheet Pricing / Upgrade navigation and page with Free and Pro plans, safe environment-configured checkout redirect, and missing-payment-url handling."
+            "text": "Add the user’s feedback history and existing feedback submission flow, account actions, authenticated navigation links, secure loading/empty/error states, and validate account isolation plus existing login, admin, upload, analytics, dashboard, Razorpay, and subscription workflows."
           },
           "type_source": "palette"
         },
@@ -173,7 +173,7 @@
           "h": 2,
           "item_ref": {
             "index": 1,
-            "text": "Add native InsightSheet Pricing / Upgrade navigation and page with Free and Pro plans, safe environment-configured checkout redirect, and missing-payment-url handling."
+            "text": "Add the user’s feedback history and existing feedback submission flow, account actions, authenticated navigation links, secure loading/empty/error states, and validate account isolation plus existing login, admin, upload, analytics, dashboard, Razorpay, and subscription workflows."
           },
           "type_source": "palette"
         },
@@ -188,7 +188,7 @@
           "h": 4,
           "item_ref": {
             "index": 1,
-            "text": "Add native InsightSheet Pricing / Upgrade navigation and page with Free and Pro plans, safe environment-configured checkout redirect, and missing-payment-url handling."
+            "text": "Add the user’s feedback history and existing feedback submission flow, account actions, authenticated navigation links, secure loading/empty/error states, and validate account isolation plus existing login, admin, upload, analytics, dashboard, Razorpay, and subscription workflows."
           },
           "type_source": "palette"
         },
@@ -203,7 +203,7 @@
           "h": 4,
           "item_ref": {
             "index": 1,
-            "text": "Add native InsightSheet Pricing / Upgrade navigation and page with Free and Pro plans, safe environment-configured checkout redirect, and missing-payment-url handling."
+            "text": "Add the user’s feedback history and existing feedback submission flow, account actions, authenticated navigation links, secure loading/empty/error states, and validate account isolation plus existing login, admin, upload, analytics, dashboard, Razorpay, and subscription workflows."
           },
           "type_source": "palette"
         },
@@ -218,7 +218,7 @@
           "h": 3,
           "item_ref": {
             "index": 1,
-            "text": "Add native InsightSheet Pricing / Upgrade navigation and page with Free and Pro plans, safe environment-configured checkout redirect, and missing-payment-url handling."
+            "text": "Add the user’s feedback history and existing feedback submission flow, account actions, authenticated navigation links, secure loading/empty/error states, and validate account isolation plus existing login, admin, upload, analytics, dashboard, Razorpay, and subscription workflows."
           },
           "type_source": "palette"
         }
@@ -235,7 +235,7 @@
       },
       "blocks": [
         {
-          "id": "nav-sidebar-root",
+          "id": "blk-40f8b17f",
           "type": "sidebar",
           "label": "Sidebar",
           "hint": "Upload Workspace, Generated Dashboard, Usability Polish",

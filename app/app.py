@@ -3,7 +3,13 @@ import reflex as rx
 from app.pages.about import about_page
 from app.pages.account import ACCOUNT_TITLE, account_page
 from app.pages.admin import ADMIN_TITLE, admin_page
-from app.pages.auth import login_page, signup_page
+from app.pages.auth import (
+    forgot_password_page,
+    login_page,
+    reset_password_page,
+    signup_page,
+    verify_email_page,
+)
 from app.pages.csv_analyzer import (
     CSV_ANALYZER_DESCRIPTION,
     CSV_ANALYZER_TITLE,
@@ -326,4 +332,25 @@ app.add_page(
     meta=NOINDEX,
     context={"sitemap": None},
     on_load=AuthState.check_session,
+)
+app.add_page(
+    forgot_password_page,
+    route="/forgot-password",
+    meta=NOINDEX,
+    context={"sitemap": None},
+    on_load=AuthState.clear_messages,
+)
+app.add_page(
+    reset_password_page,
+    route="/reset-password",
+    meta=NOINDEX,
+    context={"sitemap": None},
+    on_load=AuthState.preflight_password_reset,
+)
+app.add_page(
+    verify_email_page,
+    route="/verify-email",
+    meta=NOINDEX,
+    context={"sitemap": None},
+    on_load=AuthState.verify_email_from_link,
 )

@@ -82,6 +82,13 @@ class User(Base):
         DateTime(timezone=True), default=None, nullable=True
     )
 
+    # Email verification timestamp. NULL means the address has never been
+    # confirmed; any non-null timezone-aware timestamp means verified. Nullable
+    # with a Python default of None so existing rows remain valid.
+    email_verified_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), default=None, nullable=True
+    )
+
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), init=False, server_default=func.now()
     )
@@ -93,6 +100,7 @@ class User(Base):
         nullable=True,
     )
 
+    # No ORM relationships
     # No ORM relationships are declared on purpose: on dataclass-mapped models
     # a `relationship(..., default=None, init=False)` writes None into the
     # related attribute at construction time, and on flush SQLAlchemy lets that
@@ -142,6 +150,62 @@ class UserSession(Base):
         server_default=func.now(),
         onupdate=func.now(),
         nullable=True,
+    )
+
+
+class AuthTokenPurpose(enum.StrEnum):
+    """What a single-use authentication token may be redeemed for."""
+
+    EMAIL_VERIFICATION = "EMAIL_VERIFICATION"
+    PASSWORD_RESET = "PASSWORD_RESET"
+
+
+class AuthToken(Base):
+    """A single-use, expiring authentication token owned by one user.
+
+    Only the SHA-256 hash of the random token is stored, so a leaked database
+    row can never be replayed as a verification or reset link. Redemption is
+    recorded by stamping `used_at`.
+    """
+
+    __tablename__ = "app_auth_token"
+    __table_args__ = (
+        Index("ix_app_auth_token_user_purpose", "user_id", "purpose"),
+        Index("ix_app_auth_token_expires_at", "expires_at"),
+        Index("ix_app_auth_token_purpose_expires_at", "purpose", "expires_at"),
+    )
+
+    id: Mapped[int] = mapped_column(primary_key=True, init=False)
+
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey("app_user.id", ondelete="CASCADE"), index=True
+    )
+
+    purpose: Mapped[AuthTokenPurpose] = mapped_column(
+        Enum(
+            AuthTokenPurpose,
+            name="app_auth_token_purpose",
+            native_enum=False,
+            validate_strings=True,
+            length=32,
+        ),
+        nullable=False,
+    )
+
+    # SHA-256 hex digest of the emailed token — never the plaintext token.
+    token_hash: Mapped[str] = mapped_column(
+        String(128), unique=True, index=True, nullable=False
+    )
+
+    expires_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False
+    )
+    used_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), default=None, nullable=True
+    )
+
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), init=False, server_default=func.now()
     )
 
 
@@ -201,6 +265,8 @@ class AuthAction(enum.StrEnum):
 
     SIGN_IN = "SIGN_IN"
     SIGN_UP = "SIGN_UP"
+    RESEND_VERIFICATION = "RESEND_VERIFICATION"
+    PASSWORD_RESET = "PASSWORD_RESET"
 
 
 class AuthRateLimit(Base):

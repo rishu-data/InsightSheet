@@ -1,3 +1,5 @@
-## My Account Dashboard Plan
-- [x] Build the protected `/account` dashboard in the existing InsightSheet visual language, with server-scoped Profile, Current Plan, Billing & Purchases, and honest persisted Activity sections using the current account, subscription, payment, session, and feedback data.
-- [x] Add the user’s feedback history and existing feedback submission flow, account actions, authenticated navigation links, secure loading/empty/error states, and validate account isolation plus existing login, admin, upload, analytics, dashboard, Razorpay, and subscription workflows.
+## InsightSheet Email Security Plan
+- [x] Extend the existing account database with minimal email-verification and single-use authentication-token records, preserving the current InsightSheet Inter typography, blue/gray palette, and existing account/admin layouts for later UI changes.
+- [x] Add real Resend-backed welcome and verification emails, unverified signup state, secure verification links, resend controls, expiration, single-use handling, and existing rate-limit protection without replacing login or sessions.
+- [x] Add forgot-password and reset-password flows to the existing login/account experience, securely rotate the existing password hash, revoke reset tokens, send password-change confirmation, and retain every current account section.
+- [x] Validate signup, verification, resend, logout, password reset, old/new password behavior, email delivery triggers, account status, existing-user compatibility, admin authorization, Razorpay, subscription, feedback, upload, analytics, and dashboard regressions without deploying.

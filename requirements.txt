@@ -8,3 +8,4 @@ reportlab
 PyGithub
 razorpay
 psycopg[binary]>=3.1.8
+resend

@@ -26,7 +26,12 @@ from sqlalchemy import select
 from app.models import AuthAction, AuthRateLimit
 
 WINDOW_SECONDS = 15 * 60
-MAX_ATTEMPTS = {AuthAction.SIGN_IN: 8, AuthAction.SIGN_UP: 5}
+MAX_ATTEMPTS = {
+    AuthAction.SIGN_IN: 8,
+    AuthAction.SIGN_UP: 5,
+    AuthAction.RESEND_VERIFICATION: 4,
+    AuthAction.PASSWORD_RESET: 4,
+}
 BASE_BLOCK_SECONDS = 60
 MAX_BLOCK_SECONDS = 15 * 60
 MAX_BLOCK_COUNT = 6

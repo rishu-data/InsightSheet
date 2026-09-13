@@ -194,9 +194,15 @@ def _profile_card() -> rx.Component:
                 "info", class_name="h-3.5 w-3.5 text-blue-600 shrink-0 mt-0.5"
             ),
             rx.el.p(
-                "Email verification shows as “Not available” because InsightSheet does not store an "
-                "email verification field. Passwords are kept only as irreversible hashes and are "
-                "never shown here.",
+                rx.cond(
+                    AccountState.profile["is_verified"],
+                    "This email address is verified, so sign-in and account emails are "
+                    "delivered to it. Passwords are kept only as irreversible hashes and "
+                    "are never shown here.",
+                    "This email address is still pending verification. Use the resend "
+                    "option in Account actions to get a fresh link. Passwords are kept "
+                    "only as irreversible hashes and are never shown here.",
+                ),
                 class_name="text-xs font-medium text-gray-600",
             ),
             class_name="flex items-start gap-2 rounded-xl border border-blue-100 bg-blue-50/60 px-4 py-3 mt-5",
@@ -480,6 +486,76 @@ def _feedback_section() -> rx.Component:
     )
 
 
+def _auth_messages() -> rx.Component:
+    return rx.fragment(
+        rx.cond(
+            AuthState.has_notice,
+            rx.el.div(
+                rx.icon(
+                    "mail-check",
+                    class_name="h-4 w-4 text-blue-500 shrink-0 mt-0.5",
+                ),
+                rx.el.p(
+                    AuthState.notice,
+                    class_name="text-sm font-medium text-blue-600",
+                ),
+                class_name="flex items-start gap-2 rounded-xl border border-blue-200 bg-blue-100 px-4 py-3 mt-4",
+            ),
+        ),
+        rx.cond(
+            AuthState.has_error,
+            rx.el.div(
+                rx.icon(
+                    "circle-alert",
+                    class_name="h-4 w-4 text-red-500 shrink-0 mt-0.5",
+                ),
+                rx.el.p(
+                    AuthState.error,
+                    class_name="text-sm font-medium text-red-500",
+                ),
+                class_name="flex items-start gap-2 rounded-xl border border-red-200 bg-red-100 px-4 py-3 mt-4",
+            ),
+        ),
+    )
+
+
+def _resend_verification_block() -> rx.Component:
+    """Shown only when this signed-in account is still unverified."""
+    return rx.cond(
+        AccountState.profile["is_verified"],
+        rx.fragment(),
+        rx.el.div(
+            rx.el.div(
+                rx.icon(
+                    "shield-alert",
+                    class_name="h-4 w-4 text-gray-500 shrink-0 mt-0.5",
+                ),
+                rx.el.p(
+                    "Your email address is not verified yet. We'll send a fresh "
+                    "single-use link to the address on this account only. Links "
+                    "expire after 24 hours.",
+                    class_name="text-xs font-medium text-gray-500",
+                ),
+                class_name="flex items-start gap-2",
+            ),
+            rx.el.button(
+                rx.cond(
+                    AuthState.resend_busy,
+                    rx.el.div(
+                        class_name="h-4 w-4 rounded-full border-2 border-blue-200 border-t-blue-600 animate-spin"
+                    ),
+                    rx.icon("send", class_name="h-4 w-4"),
+                ),
+                "Resend verification email",
+                on_click=AuthState.resend_verification_for_account,
+                disabled=AuthState.resend_busy,
+                class_name="flex items-center gap-2 w-fit rounded-xl border border-blue-200 bg-white px-4 py-2.5 text-sm font-semibold text-blue-600 hover:bg-blue-50 disabled:opacity-60 transition-colors",
+            ),
+            class_name="flex flex-col gap-3 w-full rounded-xl border border-gray-200 bg-gray-50 p-4 mt-4",
+        ),
+    )
+
+
 def _account_actions() -> rx.Component:
     return rx.el.div(
         _section_header(
@@ -498,6 +574,12 @@ def _account_actions() -> rx.Component:
                 href="/dashboard",
                 class_name="flex items-center gap-2 w-fit rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 hover:border-blue-300 hover:text-blue-700 transition-colors",
             ),
+            rx.el.a(
+                rx.icon("key-round", class_name="h-4 w-4"),
+                "Reset password",
+                href="/forgot-password",
+                class_name="flex items-center gap-2 w-fit rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 hover:border-blue-300 hover:text-blue-700 transition-colors",
+            ),
             rx.el.button(
                 rx.icon("log-out", class_name="h-4 w-4"),
                 "Sign out",
@@ -506,14 +588,17 @@ def _account_actions() -> rx.Component:
             ),
             class_name="flex flex-wrap items-center gap-3 w-full",
         ),
+        _auth_messages(),
+        _resend_verification_block(),
         rx.el.div(
             rx.icon(
                 "info", class_name="h-3.5 w-3.5 text-blue-600 shrink-0 mt-0.5"
             ),
             rx.el.p(
-                "Password reset and password change are not offered because InsightSheet's current "
-                "auth system has no such flow — passwords are only ever written at sign-up as an "
-                "irreversible hash. Signing out revokes this browser's server-side session.",
+                "Password resets are emailed as single-use links that expire after 1 hour. "
+                "Passwords are only ever stored as irreversible hashes, and completing a reset "
+                "signs out every existing session. Signing out revokes this browser's "
+                "server-side session.",
                 class_name="text-xs font-medium text-gray-600",
             ),
             class_name="flex items-start gap-2 rounded-xl border border-blue-100 bg-blue-50/60 px-4 py-3 mt-5",

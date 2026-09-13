@@ -75,6 +75,7 @@ class ProfileInfo(TypedDict):
     status: str
     is_active: bool
     email_verified: str
+    is_verified: bool
     account_reference: str
 
 
@@ -125,7 +126,8 @@ EMPTY_PROFILE: ProfileInfo = {
     "created_at": NOT_AVAILABLE,
     "status": NOT_AVAILABLE,
     "is_active": False,
-    "email_verified": NOT_AVAILABLE,
+    "email_verified": "Pending verification",
+    "is_verified": False,
     "account_reference": NOT_AVAILABLE,
 }
 
@@ -366,14 +368,21 @@ class AccountState(rx.State):
                 return
 
             email_normalized = str(user.email_normalized or "").strip().lower()
+            verified_at = user.email_verified_at
+            is_verified = verified_at is not None
+            verification_label = (
+                f"Verified on {_stamp(verified_at)}"
+                if is_verified
+                else "Pending verification"
+            )
             self.profile = ProfileInfo(
                 name=str(user.display_name or "") or NOT_AVAILABLE,
                 email=str(user.email or "") or NOT_AVAILABLE,
                 created_at=_stamp(user.created_at),
                 status="Active" if user.is_active else "Inactive",
                 is_active=bool(user.is_active),
-                # No email verification column exists in `app_user`.
-                email_verified=NOT_AVAILABLE,
+                email_verified=verification_label,
+                is_verified=is_verified,
                 account_reference=f"Account #{int(user.id)}",
             )
             self.latest_login = _stamp(user.last_login_at)
